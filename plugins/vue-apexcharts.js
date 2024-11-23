@@ -1,7 +1,8 @@
 export default defineNuxtPlugin((nuxtApp) => {
-    if (process.client) return; // หยุดการโหลด plugin ใน server-side
+  if (process.server) {
     import('vue3-apexcharts').then((module) => {
       const VueApexCharts = module.default;
       nuxtApp.vueApp.component('apexchart', VueApexCharts);
     });
-  });
+  }
+});
